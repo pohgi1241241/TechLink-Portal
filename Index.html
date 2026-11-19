@@ -491,4 +491,541 @@ const articles = {
 
       <div class="quiz" data-question="Which USB connector is designed to be inserted either way up?"
         data-options='["USB Type-A","USB Type-C","USB Type-B"]'
- 
+        data-answer="1"></div>
+    `,
+    sources: [
+      ["USB Implementers Forum", "https://www.usb.org/", "The organization responsible for USB specifications and related resources."],
+      ["USB-IF: USB specifications", "https://www.usb.org/documents", "Documents and specification resources published by USB-IF."],
+      ["Microsoft Support: USB help", "https://support.microsoft.com/windows", "Windows support resources for USB and connected-device issues."]
+    ]
+  },
+
+  networking: {
+    title: "Networking, Ethernet and RJ45",
+    category: "Networking",
+    summary: "Learn network basics, IP addressing, Wi-Fi, Ethernet cabling, RJ45 wiring, and safe troubleshooting.",
+    html: `
+      <p>A computer network is a group of connected devices that communicate and share resources. Networks use wired or wireless links, addressing, and agreed rules called protocols. A home or school network may include computers, phones, printers, switches, wireless access points, and a router.</p>
+
+      <h3>Common network devices</h3>
+      <div class="grid-3">
+        <div class="mini"><h4>Router</h4><p>Forwards traffic between networks, such as a local network and an internet connection.</p></div>
+        <div class="mini"><h4>Switch</h4><p>Connects wired devices on a local network and forwards traffic to the appropriate port.</p></div>
+        <div class="mini"><h4>Access point</h4><p>Provides Wi-Fi access to a wired local network.</p></div>
+        <div class="mini"><h4>Modem or ONT</h4><p>Connects a home or organization to the service provider’s network; the equipment depends on the connection type.</p></div>
+        <div class="mini"><h4>NIC</h4><p>A network interface connects a device to Ethernet, Wi-Fi, or another network type.</p></div>
+        <div class="mini"><h4>Firewall</h4><p>Applies rules to network traffic to help protect devices and networks.</p></div>
+      </div>
+
+      <h3>IP addresses, gateway, DHCP and DNS</h3>
+      <p>An IP address identifies a network interface so it can communicate on an IP network. An IPv4 address is written as four numbers from 0 to 255, for example <strong>192.168.1.10</strong>. Private IPv4 ranges are commonly used inside homes, schools, and organizations; they are not the same as a public internet address.</p>
+      <div class="grid-3">
+        <div class="mini"><h4>Subnet mask</h4><p>Helps a device determine which IP addresses are on its local network.</p></div>
+        <div class="mini"><h4>Default gateway</h4><p>The router or other device a computer uses to reach networks outside its local network.</p></div>
+        <div class="mini"><h4>DHCP</h4><p>Automatically supplies network settings, such as an IP address, to devices.</p></div>
+        <div class="mini"><h4>DNS</h4><p>Looks up domain names, such as example.com, so applications can find network services.</p></div>
+      </div>
+
+      <h3>Ethernet cables and RJ45-style connectors</h3>
+      <p>Wired Ethernet commonly uses twisted-pair cables terminated with an 8-position modular connector often called RJ45. The order of the eight conductors must follow a wiring standard at each end. T568A and T568B are the two common termination schemes.</p>
+
+      <h4>T568A and T568B pin order</h4>
+      <table>
+        <thead><tr><th>Pin</th><th>T568A wire color</th><th>T568B wire color</th></tr></thead>
+        <tbody>
+          <tr><td>1</td><td>White/Green</td><td>White/Orange</td></tr>
+          <tr><td>2</td><td>Green</td><td>Orange</td></tr>
+          <tr><td>3</td><td>White/Orange</td><td>White/Green</td></tr>
+          <tr><td>4</td><td>Blue</td><td>Blue</td></tr>
+          <tr><td>5</td><td>White/Blue</td><td>White/Blue</td></tr>
+          <tr><td>6</td><td>Orange</td><td>Green</td></tr>
+          <tr><td>7</td><td>White/Brown</td><td>White/Brown</td></tr>
+          <tr><td>8</td><td>Brown</td><td>Brown</td></tr>
+        </tbody>
+      </table>
+
+      <p>For a typical patch cable, use the same wiring standard at both ends. T568A on one end and T568B on the other makes a crossover cable. Many modern network ports support Auto MDI-X, so a crossover cable is often unnecessary; follow your equipment or lab instructions.</p>
+
+      <h3>Making and testing a patch cable</h3>
+      <div class="steps-box" data-steps='[
+        "Use the cable type, connector, tools, and wiring standard specified by your teacher or equipment manufacturer.",
+        "Cut the cable to the required length and carefully remove a small amount of the outer jacket without damaging the inner wires.",
+        "Arrange all eight conductors in the chosen T568A or T568B order. Keep the pairs twisted as close to the connector as the plug design allows.",
+        "Trim the conductors evenly and insert them fully into a compatible connector, checking that the jacket is positioned for strain relief.",
+        "Use the correct crimping tool, then inspect the connector for correct order and fully seated contacts.",
+        "Test the finished cable with an Ethernet cable tester and correct any failed connections before use."
+      ]'></div>
+
+      <div class="callout warn">Copper Ethernet channels are commonly designed for a maximum of 100 m overall, including the permanent cable and patch leads. Use suitable cable, connectors, and installation practices for the environment. Avoid running network cable where it can be crushed, overheated, or create a trip hazard.</div>
+
+      <h3>Wi-Fi basics and safety</h3>
+      <p>Wi-Fi connects devices to a local network using radio signals. Signal strength can be affected by distance, walls, interference, and access-point placement. Use the school’s approved network, follow its access rules, and do not share passwords or attempt to change network equipment without permission.</p>
+
+      <h3>Useful Windows network tools</h3>
+      <div class="accordion">
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false">ipconfig</button>
+          <div class="acc-body">Displays local IP configuration, including the address, subnet mask, and default gateway. Use it to check whether the device received network settings.</div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false">ping</button>
+          <div class="acc-body">Checks whether a destination responds to network test messages. A missing reply does not always mean the destination is offline; some networks block these messages. Only test devices or addresses you are authorized to check.</div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false">nslookup</button>
+          <div class="acc-body">Queries DNS to see whether a domain name can be resolved to an address. Results depend on the DNS server and network configuration.</div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false">tracert</button>
+          <div class="acc-body">Shows the route toward a destination, one network hop at a time. Some routers do not respond to these probes, so a timeout alone does not prove a fault.</div>
+        </div>
+      </div>
+
+      <h3>A safe first-check sequence</h3>
+      <div class="steps-box" data-steps='[
+        "Check whether the issue affects one device or several devices.",
+        "Check Wi-Fi status or Ethernet cable connections, and look for link lights if present.",
+        "Check the device’s network settings and see whether it has an IP address and default gateway.",
+        "If permitted, ask your teacher or network administrator whether there is a known outage or maintenance.",
+        "Record the error message and what you checked. Share it with the responsible support person."
+      ]'></div>
+
+      <div class="callout">Use network commands only on your own device or a lab network where you have permission. Do not scan, access, or change school or public network devices without explicit authorization.</div>
+
+      <div class="quiz" data-question="Which device commonly forwards traffic between a local network and other networks?"
+        data-options='["Router","Keyboard","Monitor"]'
+        data-answer="0"></div>
+    `,
+    sources: [
+      ["Cisco Networking Academy", "https://www.netacad.com/", "Networking courses and learning resources for students."],
+      ["Cisco: What is a computer network?", "https://www.cisco.com/site/us/en/learn/topics/networking/what-is-a-computer-network.html", "An overview of networks, devices, and network communication."],
+      ["Microsoft Learn: Windows networking", "https://learn.microsoft.com/en-us/windows-server/networking/", "Microsoft documentation for Windows networking concepts and tools."],
+      ["Cloudflare Learning Center: DNS", "https://www.cloudflare.com/learning/dns/what-is-dns/", "An accessible explanation of domain name resolution."],
+      ["IEEE 802.3 Ethernet Working Group", "https://www.ieee802.org/3/", "Information about the IEEE Ethernet standards working group."],
+      ["Fluke Networks: Knowledge base", "https://www.flukenetworks.com/knowledge-base", "Networking and cable-testing learning resources."],
+      ["TIA: Standards", "https://www.tiaonline.org/what-we-do/standards/", "Telecommunications industry standards information."]
+    ]
+  }
+};
+
+/* ================= ELEMENTS & STATE ================= */
+const content = document.getElementById("content");
+const navList = document.getElementById("navList");
+const searchBox = document.getElementById("searchBox");
+const progressText = document.getElementById("progressText");
+const progressBar = document.getElementById("progressBar");
+const progressTrack = document.querySelector(".bar");
+const themeBtn = document.getElementById("themeToggle");
+
+function readStoredJSON(key, fallback) {
+  try {
+    const value = JSON.parse(localStorage.getItem(key));
+    return value === null ? fallback : value;
+  } catch {
+    return fallback;
+  }
+}
+
+const articleKeys = Object.keys(articles);
+const storedReviewed = readStoredJSON("ictReviewed", []);
+let reviewed = Array.isArray(storedReviewed)
+  ? storedReviewed.filter(key => articleKeys.includes(key))
+  : [];
+
+let currentKey = null;
+
+function readFontSize() {
+  try {
+    const size = Number.parseInt(localStorage.getItem("ictFont") || "16", 10);
+    return Number.isFinite(size) ? Math.min(22, Math.max(12, size)) : 16;
+  } catch {
+    return 16;
+  }
+}
+
+let fontSize = readFontSize();
+
+/* ================= UTILITIES ================= */
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function saveReviewed() {
+  try {
+    localStorage.setItem("ictReviewed", JSON.stringify(reviewed));
+  } catch {
+    // The portal remains usable when browser storage is unavailable.
+  }
+}
+
+function updateProgress() {
+  const total = articleKeys.length;
+  const percent = total ? Math.round(reviewed.length / total * 100) : 0;
+  progressText.textContent = `${reviewed.length} / ${total}`;
+  progressBar.style.width = `${percent}%`;
+  progressTrack.setAttribute("aria-valuenow", String(percent));
+}
+
+function buildNav(filter = "") {
+  navList.replaceChildren();
+  const normalized = filter.toLowerCase();
+
+  articleKeys.forEach(key => {
+    const article = articles[key];
+    if (normalized && !(article.title + " " + article.category).toLowerCase().includes(normalized)) return;
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "nav-btn" + (key === currentKey ? " active" : "");
+    button.setAttribute("aria-current", key === currentKey ? "page" : "false");
+
+    const title = document.createElement("span");
+    title.textContent = article.title;
+
+    if (reviewed.includes(key)) {
+      const tick = document.createElement("span");
+      tick.className = "tick";
+      tick.setAttribute("aria-label", "Reviewed");
+      tick.textContent = "✓ ";
+      button.append(tick);
+    }
+
+    button.append(title);
+    button.addEventListener("click", () => showArticle(key));
+    navList.append(button);
+  });
+
+  updateProgress();
+}
+
+/* ================= HOME ================= */
+function showHome() {
+  currentKey = null;
+
+  const tiles = articleKeys.map(key => `
+    <article class="tile" data-key="${key}" tabindex="0" role="button"
+      aria-label="Open ${escapeHtml(articles[key].title)}">
+      <span class="tag">${escapeHtml(articles[key].category)}</span>
+      <h3>${escapeHtml(articles[key].title)}</h3>
+      <p>${escapeHtml(articles[key].summary)}</p>
+    </article>
+  `).join("");
+
+  content.innerHTML = `
+    <div class="hero">
+      <h2>ICT Learning Portal</h2>
+      <p>Guides, explanations, and troubleshooting references for selected ICT topics. Choose a topic below or use search. Mark a topic as reviewed when you finish it.</p>
+      <p>This portal is an extra resource. Continue following your teacher’s instructions, classroom activities, and hands-on practice.</p>
+    </div>
+    <div class="hero-grid">${tiles}</div>`;
+
+  content.querySelectorAll(".tile").forEach(tile => {
+    const openTile = () => showArticle(tile.dataset.key);
+    tile.addEventListener("click", openTile);
+    tile.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openTile();
+      }
+    });
+  });
+
+  buildNav();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+/* ================= ARTICLE ================= */
+function showArticle(key) {
+  const article = articles[key];
+  if (!article) return;
+
+  currentKey = key;
+  const isReviewed = reviewed.includes(key);
+  const sourcesHtml = article.sources.map(source => `
+    <li>
+      <a href="${escapeHtml(source[1])}" target="_blank" rel="noopener noreferrer">${escapeHtml(source[0])}</a><br>
+      <span>${escapeHtml(source[2])}</span>
+    </li>
+  `).join("");
+
+  content.innerHTML = `
+    <h2>${escapeHtml(article.title)}</h2>
+    <div class="meta">${escapeHtml(article.category)}</div>
+    <nav class="toc" id="toc" aria-label="On this page"><strong>On this page</strong></nav>
+    <div id="articleBody">${article.html}</div>
+    <label class="review">
+      <input type="checkbox" id="reviewedBox" ${isReviewed ? "checked" : ""}>
+      I have reviewed this topic
+    </label>
+    <section class="sources" aria-labelledby="sourcesHeading">
+      <h3 id="sourcesHeading">Sources and further reading</h3>
+      <ul>${sourcesHtml}</ul>
+    </section>`;
+
+  buildTOC();
+  initInteractive();
+  buildNav(searchBox.value.trim());
+
+  document.getElementById("reviewedBox").addEventListener("change", event => {
+    if (event.target.checked && !reviewed.includes(key)) reviewed.push(key);
+    if (!event.target.checked) reviewed = reviewed.filter(item => item !== key);
+    saveReviewed();
+    buildNav(searchBox.value.trim());
+  });
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  content.focus({ preventScroll: true });
+}
+
+function buildTOC() {
+  const toc = document.getElementById("toc");
+  const headings = document.querySelectorAll("#articleBody h3");
+
+  if (!headings.length) {
+    toc.remove();
+    return;
+  }
+
+  headings.forEach((heading, index) => {
+    const id = `section-${index}`;
+    heading.id = id;
+
+    const link = document.createElement("a");
+    link.href = `#${id}`;
+    link.textContent = heading.textContent;
+    toc.append(link);
+  });
+}
+
+/* ================= INTERACTIVE COMPONENTS ================= */
+function initInteractive() {
+  // Step-by-step guides
+  document.querySelectorAll(".steps-box[data-steps]").forEach(box => {
+    let steps;
+
+    try {
+      steps = JSON.parse(box.dataset.steps);
+    } catch {
+      box.textContent = "This guide could not be loaded.";
+      return;
+    }
+
+    if (!Array.isArray(steps) || steps.length === 0) {
+      box.textContent = "No steps are available.";
+      return;
+    }
+
+    let current = 0;
+    const wrap = document.createElement("section");
+    wrap.className = "steps-box";
+    wrap.setAttribute("aria-label", "Step-by-step guide");
+    wrap.innerHTML = `
+      <div class="step-count" aria-live="polite"></div>
+      <div class="progress-steps" aria-hidden="true"><div></div></div>
+      ${steps.map((step, index) => `<div class="step${index === 0 ? " show" : ""}">${escapeHtml(step)}</div>`).join("")}
+      <div class="step-buttons">
+        <button type="button" class="prev">Previous</button>
+        <button type="button" class="primary next">Next</button>
+      </div>`;
+
+    box.replaceWith(wrap);
+
+    const shown = wrap.querySelectorAll(".step");
+    const count = wrap.querySelector(".step-count");
+    const fill = wrap.querySelector(".progress-steps div");
+    const prev = wrap.querySelector(".prev");
+    const next = wrap.querySelector(".next");
+
+    function update() {
+      shown.forEach((step, index) => step.classList.toggle("show", index === current));
+      count.textContent = `Step ${current + 1} of ${steps.length}`;
+      fill.style.width = `${((current + 1) / steps.length) * 100}%`;
+      prev.disabled = current === 0;
+      next.textContent = current === steps.length - 1 ? "Finish" : "Next";
+    }
+
+    prev.addEventListener("click", () => {
+      if (current > 0) {
+        current--;
+        update();
+      }
+    });
+
+    next.addEventListener("click", () => {
+      if (current < steps.length - 1) {
+        current++;
+        update();
+      } else {
+        count.textContent = "All steps complete";
+        next.disabled = true;
+      }
+    });
+
+    update();
+  });
+
+  // Accordions
+  document.querySelectorAll(".acc-head").forEach(button => {
+    button.addEventListener("click", () => {
+      const isOpen = button.getAttribute("aria-expanded") === "true";
+      button.setAttribute("aria-expanded", String(!isOpen));
+      button.nextElementSibling.classList.toggle("open", !isOpen);
+    });
+  });
+
+  // Quizzes
+  document.querySelectorAll(".quiz").forEach((quiz, index) => {
+    let options;
+
+    try {
+      options = JSON.parse(quiz.dataset.options);
+    } catch {
+      quiz.textContent = "This quiz could not be loaded.";
+      return;
+    }
+
+    const answer = Number.parseInt(quiz.dataset.answer, 10);
+    const name = `quiz-${currentKey}-${index}`;
+
+    quiz.innerHTML = `
+      <h3>Quick check</h3>
+      <p>${escapeHtml(quiz.dataset.question)}</p>
+      ${options.map((option, optionIndex) => `
+        <label><input type="radio" name="${name}" value="${optionIndex}">${escapeHtml(option)}</label>
+      `).join("")}
+      <button type="button" class="primary check" style="margin-top:8px">Check answer</button>
+      <div class="quiz-feedback" aria-live="polite"></div>`;
+
+    const feedback = quiz.querySelector(".quiz-feedback");
+
+    quiz.querySelector(".check").addEventListener("click", () => {
+      const chosen = quiz.querySelector("input:checked");
+
+      if (!chosen) {
+        feedback.className = "quiz-feedback bad";
+        feedback.textContent = "Select an option first.";
+        return;
+      }
+
+      if (Number.parseInt(chosen.value, 10) === answer) {
+        feedback.className = "quiz-feedback ok";
+        feedback.textContent = "Correct.";
+      } else {
+        feedback.className = "quiz-feedback bad";
+        feedback.textContent = "Not quite. Review the section and try again.";
+      }
+    });
+  });
+}
+
+/* ================= SEARCH ================= */
+function showSearchResults(rawQuery) {
+  const query = rawQuery.toLowerCase();
+
+  const hits = articleKeys.filter(key => {
+    const article = articles[key];
+    const text = `${article.title} ${article.category} ${article.summary} ${article.html.replace(/<[^>]+>/g, " ")}`;
+    return text.toLowerCase().includes(query);
+  });
+
+  content.innerHTML = `
+    <h2>Results for “${escapeHtml(rawQuery)}”</h2>
+    <div style="margin-top:16px">
+      ${hits.length ? hits.map(key => `
+        <article class="search-hit" data-key="${key}" tabindex="0" role="button"
+          aria-label="Open ${escapeHtml(articles[key].title)}">
+          <h3>${escapeHtml(articles[key].title)}</h3>
+          <p>${escapeHtml(articles[key].summary)}</p>
+        </article>
+      `).join("") : "<p>No topics match. Try words like USB, RJ45, troubleshooting, or network.</p>"}
+    </div>`;
+
+  content.querySelectorAll(".search-hit").forEach(hit => {
+    const openHit = () => showArticle(hit.dataset.key);
+    hit.addEventListener("click", openHit);
+    hit.addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openHit();
+      }
+    });
+  });
+
+  content.focus({ preventScroll: true });
+}
+
+searchBox.addEventListener("input", event => {
+  const rawQuery = event.target.value.trim();
+  buildNav(rawQuery);
+
+  if (!rawQuery) {
+    showHome();
+    return;
+  }
+
+  showSearchResults(rawQuery);
+});
+
+/* ================= THEME, FONT, HOME ================= */
+function applyFont() {
+  document.documentElement.style.setProperty("--font-size", `${fontSize}px`);
+  try {
+    localStorage.setItem("ictFont", String(fontSize));
+  } catch {
+    // Keep the selected size for the current page even if storage is unavailable.
+  }
+}
+
+document.getElementById("fontUp").addEventListener("click", () => {
+  if (fontSize < 22) {
+    fontSize++;
+    applyFont();
+  }
+});
+
+document.getElementById("fontDown").addEventListener("click", () => {
+  if (fontSize > 12) {
+    fontSize--;
+    applyFont();
+  }
+});
+
+function setTheme(isDark) {
+  document.body.classList.toggle("dark", isDark);
+  themeBtn.textContent = isDark ? "Light mode" : "Dark mode";
+  themeBtn.setAttribute("aria-pressed", String(isDark));
+
+  try {
+    localStorage.setItem("ictTheme", isDark ? "dark" : "light");
+  } catch {
+    // Theme remains active for the current page.
+  }
+}
+
+themeBtn.addEventListener("click", () => {
+  setTheme(!document.body.classList.contains("dark"));
+});
+
+document.getElementById("homeBtn").addEventListener("click", () => {
+  searchBox.value = "";
+  showHome();
+});
+
+/* ================= INIT ================= */
+try {
+  setTheme(localStorage.getItem("ictTheme") === "dark");
+} catch {
+  setTheme(false);
+}
+
+applyFont();
+showHome();
+</script>
+</body>
+</html>
