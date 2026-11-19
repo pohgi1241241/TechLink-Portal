@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Student-friendly ICT learning guides for hardware, software, USB, networking, and troubleshooting.">
+<title>ICT Learning Portal | St. Ignatius Technical Institute</title>
+<style>
+  :root {
+    color-scheme: light;
+    --primary: #1e3a5f;
+    --accent: #2563eb;
+    --bg: #f8fafc;
+    --card: #ffffff;
+    --text: #1e293b;
+    --muted: #64748b;
+    --line: #e2e8f0;
+    --success: #16a34a;
+    --error: #dc2626;
+    --font-size: 16px;
+  }
+
+  body.dark {
+    color-scheme: dark;
+    --primary: #1e293b;
+    --accent: #60a5fa;
+    --bg: #0f172a;
+    --card: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --line: #334155;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
+    font-size: var(--font-size);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+  }
+
+  a { color: var(--accent); }
+  button, input { font: inherit; }
+  button { cursor: pointer; }
+
+  button:focus-visible, a:focus-visible, input:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+  }
+
+  header {
+    background: var(--card);
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .brand h1 { margin: 0; font-size: 1.15rem; color: var(--primary); }
+  body.dark .brand h1 { color: var(--text); }
+  .brand p { margin: 0; font-size: .85rem; color: var(--muted); }
+  .tools { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+  button {
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 7px 14px;
+    background: var(--card);
+    color: var(--text);
+    transition: background .15s, border-color .15s;
+  }
+
+  button:hover:not(:disabled) { border-color: var(--accent); color: var(--accent); }
+  button:disabled { cursor: not-allowed; opacity: .55; }
+
+  button.primary {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: #fff;
+  }
+
+  button.primary:hover:not(:disabled) { color: #fff; opacity: .92; }
+
+  .layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 24px;
+  }
+
+  aside { position: sticky; top: 90px; height: fit-content; }
+
+  .search {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: var(--card);
+    color: var(--text);
+    margin-bottom: 14px;
+  }
+
+  .nav-label {
+    font-size: .75rem;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: var(--muted);
+    margin: 14px 0 6px;
+  }
+
+  .nav-btn {
+    display: block;
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: transparent;
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-bottom: 2px;
+    color: var(--text);
+  }
+
+  .nav-btn:hover { background: var(--line); color: var(--text); }
+  .nav-btn.active { background: var(--accent); color: #fff; }
+  .nav-btn .tick { color: var(--success); margin-right: 4px; font-weight: 700; }
+  .nav-btn.active .tick { color: #fff; }
+
+  .progress { margin-top: 20px; font-size: .85rem; color: var(--muted); }
+  .bar { height: 6px; background: var(--line); border-radius: 3px; overflow: hidden; margin-top: 6px; }
+  .bar div { height: 100%; width: 0; background: var(--success); transition: width .3s; }
+
+  main {
+    min-width: 0;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 32px 36px;
+    min-height: 520px;
+  }
+
+  main h2 { color: var(--primary); margin: 0 0 4px; font-size: 1.6rem; }
+  body.dark main h2 { color: var(--text); }
+  main h3 { color: var(--accent); margin: 28px 0 10px; font-size: 1.1rem; }
+  .meta { color: var(--muted); font-size: .9rem; margin-bottom: 18px; }
+  p { margin: 0 0 12px; }
+
+  .toc {
+    background: var(--bg);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin: 18px 0 24px;
+  }
+
+  .toc strong {
+    font-size: .85rem;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: var(--muted);
+  }
+
+  .toc a { display: block; text-decoration: none; padding: 3px 0; font-size: .95rem; }
+  .toc a:hover { text-decoration: underline; }
+
+  .hero { padding: 8px 0 4px; }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 14px;
+    margin-top: 20px;
+  }
+
+  .tile {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 18px;
+    cursor: pointer;
+    background: var(--card);
+    transition: transform .15s, box-shadow .15s;
+  }
+
+  .tile:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(15,23,42,.08); }
+  .tile:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .tile .tag { display: inline-block; font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--accent); margin-bottom: 6px; }
+  .tile h3 { margin: 0 0 6px; color: var(--text); font-size: 1.02rem; }
+  .tile p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 12px;
+    margin: 14px 0;
+  }
+
+  .mini { background: var(--bg); border-radius: 10px; padding: 14px; }
+  .mini h4 { margin: 0 0 4px; font-size: .95rem; }
+  .mini p { margin: 0; font-size: .88rem; color: var(--muted); }
+
+  table { width: 100%; border-collapse: collapse; margin: 10px 0 16px; font-size: .95rem; }
+  th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { color: var(--muted); font-weight: 600; font-size: .85rem; text-transform: uppercase; letter-spacing: .04em; }
+
+  .steps-box { background: var(--bg); border-radius: 12px; padding: 16px 18px; margin: 12px 0; }
+  .step { display: none; min-height: 3.2em; }
+  .step.show { display: block; }
+  .step-count { font-size: .85rem; color: var(--muted); }
+  .progress-steps { height: 4px; background: var(--line); border-radius: 2px; margin: 10px 0 12px; overflow: hidden; }
+  .progress-steps div { height: 100%; background: var(--accent); width: 0; transition: width .25s; }
+  .step-buttons { display: flex; gap: 8px; margin-top: 8px; }
+
+  .accordion { border-top: 1px solid var(--line); }
+  .acc-item { border-bottom: 1px solid var(--line); }
+  .acc-head {
+    width: 100%;
+    text-align: left;
+    border: none;
+    background: transparent;
+    padding: 14px 4px;
+    font-weight: 600;
+    color: var(--text);
+    border-radius: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .acc-head:hover { color: var(--accent); background: transparent; border: none; }
+  .acc-head::after { content: "+"; color: var(--muted); }
+  .acc-head[aria-expanded="true"]::after { content: "−"; }
+  .acc-body { display: none; padding: 0 4px 14px; color: var(--muted); }
+  .acc-body.open { display: block; }
+
+  .callout {
+    border-left: 3px solid var(--accent);
+    background: var(--bg);
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    margin: 14px 0;
+    font-size: .95rem;
+  }
+
+  .callout.warn { border-color: #f59e0b; }
+
+  .diagram {
+    font-family: Consolas, "Courier New", monospace;
+    background: var(--bg);
+    padding: 14px 16px;
+    border-radius: 10px;
+    overflow-x: auto;
+    font-size: .92rem;
+    line-height: 1.8;
+  }
+
+  .quiz { border: 1px solid var(--line); border-radius: 12px; padding: 18px; margin-top: 24px; }
+  .quiz h3 { margin-top: 0; }
+  .quiz label { display: block; padding: 8px 10px; border-radius: 8px; cursor: pointer; }
+  .quiz label:hover { background: var(--bg); }
+  .quiz input { margin-right: 8px; }
+  .quiz-feedback { margin-top: 10px; font-weight: 600; min-height: 1.4em; }
+  .ok { color: var(--success); }
+  .bad { color: var(--error); }
+
+  .review {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 28px 0 0;
+    padding: 14px 16px;
+    background: var(--bg);
+    border-radius: 10px;
+    font-weight: 600;
+  }
+
+  .review input { width: 18px; height: 18px; accent-color: var(--success); }
+
+  .sources { margin-top: 28px; padding-top: 18px; border-top: 1px solid var(--line); }
+  .sources h3 { margin-top: 0; }
+  .sources ul { padding-left: 18px; margin: 0; }
+  .sources li { margin-bottom: 10px; }
+  .sources a { text-decoration: none; }
+  .sources a:hover { text-decoration: underline; }
+  .sources span { color: var(--muted); font-size: .88rem; }
+
+  .search-hit { padding: 14px 0; border-bottom: 1px solid var(--line); cursor: pointer; }
+  .search-hit:hover h3 { color: var(--accent); }
+  .search-hit h3 { margin: 0 0 4px; color: var(--text); font-size: 1rem; }
+  .search-hit p { margin: 0; color: var(--muted); font-size: .9rem; }
+
+  footer { text-align: center; color: var(--muted); font-size: .85rem; padding: 24px 16px 32px; }
+
+  @media (max-width: 820px) {
+    .layout { grid-template-columns: 1fr; padding: 16px; }
+    aside { position: static; }
+    main { padding: 22px; }
+  }
+
+  @media (max-width: 480px) {
+    .header-inner { padding: 12px 16px; }
+    .tools button { padding: 6px 10px; }
+    main { padding: 18px; }
+    table { display: block; overflow-x: auto; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  }
+
+/* Cleaner focus and scrolling behavior */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 16px;
+}
+
+button,
+.nav-btn,
+.tile,
+.search-hit {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+.tile:focus-visible,
+.search-hit:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Subtle polish for cards and interactive items */
+main {
+  box-shadow: 0 8px 28px rgba(15, 23, 42, .04);
+}
+
+.tile,
+.search-hit {
+  transition: background .15s, border-color .15s, transform .15s;
+}
+
+.tile:active,
+.search-hit:active {
+  transform: scale(.99);
+}
+
+table {
+  border-radius: 8px;
+}
+
+th {
+  background: var(--bg);
+}
+
+.review {
+  cursor: pointer;
+}
+
+/* Tablet and smaller screens */
+@media (max-width: 820px) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding: 16px;
+  }
+
+  aside {
+    position: static;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px;
+  }
+
+  .nav-label {
+    margin-top: 8px;
+  }
+
+  #navList {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    padding: 2px 2px 10px;
+    scrollbar-width: thin;
+    scroll-snap-type: x proximity;
+  }
+
+  #navList .nav-btn {
+    flex: 0 0 auto;
+    width: auto;
+    min-height: 44px;
+    margin: 0;
+    white-space: nowrap;
+    scroll-snap-align: start;
+  }
+
+  .progress {
+    margin-top: 8px;
+  }
+
+  main {
+    padding: 24px;
+  }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .header-inner {
+    align-items: flex-start;
+    padding: 12px 16px;
+    gap: 10px;
+  }
+
+  .brand h1 {
+    font-size: 1.05rem;
+  }
+
+  .brand p {
+    font-size: .78rem;
+    line-height: 1.4;
+  }
+
+  .tools {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    width: 100%;
+    gap: 6px;
+  }
+
+  .tools button {
+    min-width: 0;
+    min-height: 44px;
+    padding: 7px 5px;
+    font-size: .85rem;
+  }
+
+  .layout {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  aside {
+    padding: 12px;
+  }
+
+  .search {
+    min-height: 46px;
+    margin-bottom: 8px;
+  }
+
+  main {
+    min-height: 0;
+    padding: 18px 16px;
+    border-radius: 12px;
+  }
+
+  main h2 {
+    font-size: 1.4rem;
+    line-height: 1.3;
+  }
+
+  main h3 {
+    margin-top: 24px;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 14px;
+  }
+
+  .tile {
+    padding: 16px;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* Keep tables readable without squeezing their columns. */
+  table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    white-space: normal;
+  }
+
+  th,
+  td {
+    min-width: 115px;
+    padding: 9px 10px;
+  }
+
+  .steps-box {
+    padding: 14px;
+  }
+
+  .step-buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .step-buttons button,
+  .quiz button {
+    min-height: 44px;
+  }
+
+  .quiz {
+    padding: 14px;
+  }
+
+  .quiz label {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .review {
+    align-items: flex-start;
+    padding: 14px;
+  }
+
+  .review input {
+    flex: 0 0 auto;
+    margin-top: 4px;
+  }
+
+  .toc {
+    padding: 12px 14px;
+  }
+
+  .toc a {
+    padding: 6px 0;
+  }
+
+  footer {
+    padding: 20px 16px 28px;
+  }
+}
+
+/* Very narrow phones */
+@media (max-width: 360px) {
+  .header-inner {
+    padding-inline: 12px;
+  }
+
+  .layout {
+    padding: 8px;
+  }
+
+  main {
+    padding: 16px 12px;
+  }
+
+  .tools {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tools button {
+    font-size: .9rem;
+  }
+}
+
+/* Respect the device's reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="brand">
+      <h1>ICT Learning Portal</h1>
+      <p>St. Ignatius Technical Institute, Banay Banay &middot; Senior High School</p>
+    </div>
+    <div class="tools" aria-label="Display settings">
+      <button id="fontDown" type="button" title="Smaller text" aria-label="Decrease text size">A-</button>
+      <button id="fontUp" type="button" title="Larger text" aria-label="Increase text size">A+</button>
+      <button id="themeToggle" type="button">Dark mode</button>
+      <button class="primary" id="homeBtn" type="button">Home</button>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside aria-label="Topic navigation">
+    <label class="nav-label" for="searchBox">Search topics</label>
+    <input class="search" id="searchBox" type="search" placeholder="Try USB or networking" autocomplete="off">
+    <div class="nav-label">Topics</div>
+    <nav id="navList" aria-label="Learning topics"></nav>
+    <div class="progress">
+      Reviewed <span id="progressText">0 / 0</span>
+      <div class="bar" role="progressbar" aria-label="Topics reviewed" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="progressBar"></div>
+      </div>
+    </div>
+  </aside>
+
+  <main id="content" tabindex="-1" aria-live="polite"></main>
+</div>
+
+<footer>
+  This portal supplements, and does not replace, teachers, classroom activities, or hands-on practice.
+</footer>
+
+<script>
+"use strict";
+
+/* ================= CONTENT ================= */
+const articles = {
+  troubleshooting: {
+    title: "Troubleshooting",
+    category: "IT Support",
+    summary: "A structured method for finding and fixing computer and device problems.",
+    html: `
+      <p>Troubleshooting is a structured process for finding the cause of a problem and fixing it. Good technicians avoid random changes: they gather evidence, test one likely cause at a time, and record the result.</p>
+
+      <h3>The general troubleshooting method</h3>
+      <div class="steps-box" data-steps='[
+        "Identify the problem: ask what happened, when it started, and what changed recently.",
+        "Gather information: check error messages, indicator lights, sounds, and relevant system logs.",
+        "Establish a probable cause: start with simple explanations such as a loose cable, muted audio, or no power.",
+        "Test the theory: change one thing at a time and observe whether the symptom changes.",
+        "Plan and apply the fix: use an approved setting, update, repair, or replacement.",
+        "Verify normal operation and check that other important functions still work.",
+        "Document the symptom, cause, fix, and any follow-up needed."
+      ]'></div>
+
+      <h3>Common symptoms and first checks</h3>
+      <table>
+        <thead><tr><th>Symptom</th><th>First checks</th><th>Possible cause</th></tr></thead>
+        <tbody>
+          <tr><td>Computer will not turn on</td><td>Power cable, outlet, battery, and power indicator</td><td>No power or a hardware fault</td></tr>
+          <tr><td>No internet</td><td>Wi-Fi status, Ethernet cable, and whether other devices connect</td><td>Connection, router, or service issue</td></tr>
+          <tr><td>Device is not recognized</td><td>Try a known-good cable or port; check Device Manager</td><td>Faulty cable, port, device, or driver</td></tr>
+          <tr><td>Computer is slow</td><td>Check available storage and Task Manager resource use</td><td>High resource use, low storage, or unwanted software</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout warn">Back up important files before major repairs or changes. Do not open power supplies or other equipment that may expose dangerous voltages.</div>
+
+      <div class="quiz" data-question="What should you do first when troubleshooting?"
+        data-options='["Replace the hard disk","Identify the problem","Reinstall the operating system"]'
+        data-answer="1"></div>
+    `,
+    sources: [
+      ["Microsoft Support: Troubleshoot problems in Windows", "https://support.microsoft.com/windows", "Microsoft support articles for diagnosing common Windows problems."],
+      ["Google IT Support Certificate", "https://grow.google/certificates/it-support/", "IT support training that includes troubleshooting and customer support."],
+      ["CompTIA A+ Certification", "https://www.comptia.org/certifications/a", "Overview of an IT support certification that covers troubleshooting concepts."]
+    ]
+  },
+
+  identification: {
+    title: "Hardware and Software Identification",
+    category: "Hardware & Software",
+    summary: "Recognize computer components and find installed system and software details.",
+    html: `
+      <p><strong>Hardware</strong> is the physical equipment in a computer system. <strong>Software</strong> is the programs and instructions that run on it. Identifying both helps technicians describe a problem and choose the right support steps.</p>
+
+      <h3>Core hardware components</h3>
+      <div class="grid-3">
+        <div class="mini"><h4>CPU</h4><p>Executes program instructions. Its model and speed can be checked in system information.</p></div>
+        <div class="mini"><h4>RAM</h4><p>Temporary working memory used by running programs. Capacity is commonly measured in GB.</p></div>
+        <div class="mini"><h4>Storage</h4><p>An HDD or SSD keeps files and programs when the computer is turned off.</p></div>
+        <div class="mini"><h4>Motherboard</h4><p>The main circuit board that connects the processor, memory, storage, and other components.</p></div>
+        <div class="mini"><h4>GPU</h4><p>Processes graphics and sends video output to a display.</p></div>
+        <div class="mini"><h4>PSU</h4><p>Provides a computer's internal components with the electrical power they require.</p></div>
+      </div>
+
+      <h3>Checking system information on Windows</h3>
+      <div class="steps-box" data-steps='[
+        "Press Windows + R, type msinfo32, and press Enter to open System Information.",
+        "Look for the Windows version, processor, installed memory, and system model.",
+        "Right-click Start and open Device Manager to see detected hardware and driver status.",
+        "Open Settings and select Apps to view installed software. Menu names can vary by Windows version."
+      ]'></div>
+
+      <h3>Hardware or software?</h3>
+      <div class="accordion">
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-e
