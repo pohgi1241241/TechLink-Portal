@@ -319,278 +319,6 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
   }
-
-/* Cleaner focus and scrolling behavior */
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 16px;
-}
-
-button,
-.nav-btn,
-.tile,
-.search-hit {
-  -webkit-tap-highlight-color: transparent;
-}
-
-button:focus-visible,
-a:focus-visible,
-input:focus-visible,
-.tile:focus-visible,
-.search-hit:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
-}
-
-/* Subtle polish for cards and interactive items */
-main {
-  box-shadow: 0 8px 28px rgba(15, 23, 42, .04);
-}
-
-.tile,
-.search-hit {
-  transition: background .15s, border-color .15s, transform .15s;
-}
-
-.tile:active,
-.search-hit:active {
-  transform: scale(.99);
-}
-
-table {
-  border-radius: 8px;
-}
-
-th {
-  background: var(--bg);
-}
-
-.review {
-  cursor: pointer;
-}
-
-/* Tablet and smaller screens */
-@media (max-width: 820px) {
-  .layout {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 16px;
-    padding: 16px;
-  }
-
-  aside {
-    position: static;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 14px;
-  }
-
-  .nav-label {
-    margin-top: 8px;
-  }
-
-  #navList {
-    display: flex;
-    gap: 8px;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
-    padding: 2px 2px 10px;
-    scrollbar-width: thin;
-    scroll-snap-type: x proximity;
-  }
-
-  #navList .nav-btn {
-    flex: 0 0 auto;
-    width: auto;
-    min-height: 44px;
-    margin: 0;
-    white-space: nowrap;
-    scroll-snap-align: start;
-  }
-
-  .progress {
-    margin-top: 8px;
-  }
-
-  main {
-    padding: 24px;
-  }
-}
-
-/* Phones */
-@media (max-width: 600px) {
-  .header-inner {
-    align-items: flex-start;
-    padding: 12px 16px;
-    gap: 10px;
-  }
-
-  .brand h1 {
-    font-size: 1.05rem;
-  }
-
-  .brand p {
-    font-size: .78rem;
-    line-height: 1.4;
-  }
-
-  .tools {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    width: 100%;
-    gap: 6px;
-  }
-
-  .tools button {
-    min-width: 0;
-    min-height: 44px;
-    padding: 7px 5px;
-    font-size: .85rem;
-  }
-
-  .layout {
-    padding: 12px;
-    gap: 12px;
-  }
-
-  aside {
-    padding: 12px;
-  }
-
-  .search {
-    min-height: 46px;
-    margin-bottom: 8px;
-  }
-
-  main {
-    min-height: 0;
-    padding: 18px 16px;
-    border-radius: 12px;
-  }
-
-  main h2 {
-    font-size: 1.4rem;
-    line-height: 1.3;
-  }
-
-  main h3 {
-    margin-top: 24px;
-  }
-
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-top: 14px;
-  }
-
-  .tile {
-    padding: 16px;
-  }
-
-  .grid-3 {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
-  /* Keep tables readable without squeezing their columns. */
-  table {
-    display: block;
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    white-space: normal;
-  }
-
-  th,
-  td {
-    min-width: 115px;
-    padding: 9px 10px;
-  }
-
-  .steps-box {
-    padding: 14px;
-  }
-
-  .step-buttons {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .step-buttons button,
-  .quiz button {
-    min-height: 44px;
-  }
-
-  .quiz {
-    padding: 14px;
-  }
-
-  .quiz label {
-    min-height: 44px;
-    display: flex;
-    align-items: center;
-  }
-
-  .review {
-    align-items: flex-start;
-    padding: 14px;
-  }
-
-  .review input {
-    flex: 0 0 auto;
-    margin-top: 4px;
-  }
-
-  .toc {
-    padding: 12px 14px;
-  }
-
-  .toc a {
-    padding: 6px 0;
-  }
-
-  footer {
-    padding: 20px 16px 28px;
-  }
-}
-
-/* Very narrow phones */
-@media (max-width: 360px) {
-  .header-inner {
-    padding-inline: 12px;
-  }
-
-  .layout {
-    padding: 8px;
-  }
-
-  main {
-    padding: 16px 12px;
-  }
-
-  .tools {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .tools button {
-    font-size: .9rem;
-  }
-}
-
-/* Respect the device's reduced-motion preference */
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  *,
-  *::before,
-  *::after {
-    transition-duration: .01ms !important;
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-  }
-}
 </style>
 </head>
 <body>
@@ -706,4 +434,61 @@ const articles = {
       <h3>Hardware or software?</h3>
       <div class="accordion">
         <div class="acc-item">
-          <button class="acc-head" type="button" aria-e
+          <button class="acc-head" type="button" aria-expanded="false">A keyboard</button>
+          <div class="acc-body">The keyboard is hardware. A device driver that helps the operating system communicate with it is software.</div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false">A web browser</button>
+          <div class="acc-body">A web browser is software. The computer and display it runs on are hardware.</div>
+        </div>
+        <div class="acc-item">
+          <button class="acc-head" type="button" aria-expanded="false">Windows</button>
+          <div class="acc-body">Windows is system software: an operating system that manages hardware and provides a platform for applications.</div>
+        </div>
+      </div>
+
+      <div class="quiz" data-question="Which of the following is software?"
+        data-options='["Hard disk drive","Device driver","RAM module"]'
+        data-answer="1"></div>
+    `,
+    sources: [
+      ["Microsoft Support: Find operating system information", "https://support.microsoft.com/windows", "Windows support resources for system settings and diagnostics."],
+      ["Khan Academy: Computers and the Internet", "https://www.khanacademy.org/computing/computers-and-internet", "Introductory lessons on computer systems and how they work."],
+      ["Intel: Learn about processors", "https://www.intel.com/content/www/us/en/products/details/processors.html", "Processor information and product details from a CPU manufacturer."]
+    ]
+  },
+
+  usb: {
+    title: "USB Identification and Safety",
+    category: "Hardware & Software",
+    summary: "Recognize common USB connectors, understand speed labels, and troubleshoot devices.",
+    html: `
+      <p>Universal Serial Bus (USB) is used to connect devices such as flash drives, keyboards, phones, and printers. The connector shape, supported USB standard, cable, and connected devices all affect what a connection can do.</p>
+
+      <h3>Common connector types</h3>
+      <table>
+        <thead><tr><th>Connector</th><th>Shape</th><th>Common uses</th></tr></thead>
+        <tbody>
+          <tr><td>USB Type-A</td><td>Flat rectangle; inserts one way</td><td>Computers, flash drives, keyboards</td></tr>
+          <tr><td>USB Type-B</td><td>Usually squarish with beveled corners</td><td>Some printers and equipment</td></tr>
+          <tr><td>Micro-USB</td><td>Small, flat connector; inserts one way</td><td>Older phones and small devices</td></tr>
+          <tr><td>USB Type-C</td><td>Small oval; reversible</td><td>Many modern phones, laptops, and accessories</td></tr>
+        </tbody>
+      </table>
+
+      <h3>USB versions and practical speed</h3>
+      <p>USB names and specifications have changed over time. For example, USB 2.0 has a signaling rate of up to 480 Mbps, while USB 3.2 Gen 1 is rated up to 5 Gbps. These are theoretical rates—not a promise of actual file-transfer speed. The port, device, cable, and workload all matter.</p>
+      <div class="callout">Connector shape does not tell you every capability. A USB Type-C port or cable may support different data speeds, charging power, or video features. Check the device and cable specifications.</div>
+
+      <h3>Checking a USB device</h3>
+      <div class="steps-box" data-steps='[
+        "Check that the connector fits without force. Never force a plug into a port.",
+        "Try a different compatible port and, if available, a known-good data cable.",
+        "On Windows, open Device Manager and look for the device or a warning icon.",
+        "Check the manufacturer or operating system support guidance before installing a driver.",
+        "Use the operating system’s safe-eject option before removing storage when possible."
+      ]'></div>
+
+      <div class="quiz" data-question="Which USB connector is designed to be inserted either way up?"
+        data-options='["USB Type-A","USB Type-C","USB Type-B"]'
+ 
